@@ -5,33 +5,13 @@ import java.util.List;
 public class Docentes {
     private String nome;
     private String email;
-    private String sala;
-    private String area;
-    private int ramal;
-    
 
     public Docentes(String nome, String email) {
         this.nome = nome;
         this.email = email;
     }
 
-    public Docentes(){
-    }
-
-    public Docentes(String nome, String email, String area){
-        super();
-        this.nome = nome;
-        this.email = email;
-        this.area = area;
-    }
-
-    public Docentes(String nome, String email, String sala, String area, int ramal) {
-        super();
-        this.nome = nome;
-        this.email = email;
-        this.sala = sala;
-        this.area = area;
-        this.ramal = ramal;
+    public Docentes() {
     }
 
     public String getNome() {
@@ -42,36 +22,12 @@ public class Docentes {
         return email;
     }
 
-    public String getSala() {
-        return sala;
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public int getRamal() {
-        return ramal;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setSala(String sala) {
-        this.sala = sala;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
-    public void setRamal(int ramal) {
-        this.ramal = ramal;
     }
 
     @Override
@@ -101,10 +57,7 @@ public class Docentes {
 
     @Override
     public String toString() {
-        return "Docentes [nome=" + nome + ", email=" + email + ", sala=" + sala + ", area=" + area + ", ramal=" + ramal
-                + "]";
+        return "Docentes [nome=" + nome + ", email=" + email + "]";
     }
 
-    
-    
 }

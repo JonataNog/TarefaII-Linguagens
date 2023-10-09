@@ -6,30 +6,26 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import javax.swing.JOptionPane;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.model.entities.Docentes;
+import com.model.entities.DocentesDeenp;
 
 public class Scraper {
     
-    public void Scraping(String url, int opc){
+    public List<Docentes> Scraping(String url, int opc){
         if(opc == 1){
             List<Docentes> docentes = getDataDecsi(url);
-            for(Docentes docente : docentes){
-                System.out.println(docente.getNome() + " " + docente.getEmail());
-            }
+            return docentes;
+            
         }else if(opc == 2){
             List<Docentes> docentes = getDataDeenp(url);
-            for(Docentes docente : docentes){
-                System.out.println(docente);
-            }
+            return docentes;
         }
-        
+        return null;
     }
 
     private List<Docentes> getDataDecsi(String url){
@@ -98,7 +94,6 @@ public class Scraper {
                     }else{
                         ramal = Integer.parseInt(str);
                     }
-                    
                 }else if(cont == 4){
                     sala = str;
                 }else if(cont == 5){
@@ -106,23 +101,21 @@ public class Scraper {
                 }else{
                     if(contCarla != 4){
                         String strAux = str;
-                        Docentes docente = new Docentes(nome, email, sala, area, ramal);
+                        Docentes docente = new DocentesDeenp(nome, email, area, ramal, sala);
                         listDocentes.add(docente);
                         nome = strAux;
                         cont = 1;
                         contCarla++;
                     }else{
                         String strAux = str;
-                        Docentes docente = new Docentes(nome, email, area);
+                        Docentes docente = new DocentesDeenp(nome, email, area);
                         listDocentes.add(docente);
                         nome = strAux;
                         cont = 1;
                         contCarla++;
                     }
                 }
-                
-                cont++;
-                
+                cont++;    
             }
 
         }catch(IOException e){
